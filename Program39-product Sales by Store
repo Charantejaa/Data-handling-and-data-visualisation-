@@ -1,0 +1,25 @@
+# Simulated Data
+product_sales <- data.frame(
+  Store = c("Store A", "Store B", "Store A", "Store C"),
+  Product = c("Widget X", "Widget Y", "Widget Y", "Widget X"),
+  Quantity_Sold = c(100, 75, 50, 80),
+  Revenue = c(500.00, 1125.00, 750.00, 400.00)
+)
+
+# a. Bar Chart for Quantity of Each Product
+barplot(product_sales$Quantity_Sold, names.arg = product_sales$Product,
+        col = rainbow(nrow(product_sales)), main = "Quantity of Each Product",
+        xlab = "Product", ylab = "Quantity Sold")
+
+# Assuming you have a 'Category' column in your data
+product_sales$Category <- c("Category A", "Category B", "Category B", "Category A")
+
+# b. Stacked Bar Chart for Quantity of Each Product within Different Categories
+barplot(t(as.matrix(product_sales$Quantity_Sold)), beside = TRUE, col = rainbow(nrow(product_sales)),
+        main = "Quantity of Each Product within Different Categories",
+        xlab = "Product", ylab = "Quantity Sold", legend.text = product_sales$Category)
+
+# c. Scatter Plot for Relationship between Revenue and Quantity Sold
+plot(product_sales$Quantity_Sold, product_sales$Revenue, col = "blue", pch = 16,
+     main = "Relationship between Revenue and Quantity Sold",
+     xlab = "Quantity Sold", ylab = "Revenue (USD)")
