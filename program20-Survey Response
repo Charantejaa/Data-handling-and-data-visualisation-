@@ -1,0 +1,26 @@
+survey_data <- data.frame(
+  Survey_ID = c(1, 2, 3),
+  Question_1 = c("A", "B", "C"),
+  Question_2 = c("B", "A", "A"),
+  Question_3 = c("C", "D", "B")
+)
+
+# a. Grouped bar chart for the distribution of answers for Question 1
+question_1_counts <- table(survey_data$Question_1)
+
+barplot(question_1_counts, col = rainbow(length(question_1_counts)),
+        main = "Distribution of Answers for Question 1",
+        xlab = "Answer",
+        ylab = "Count")
+
+# b. Stacked bar chart for the overall distribution of responses for all three questions
+overall_counts <- table(unlist(survey_data[, -1]))
+
+barplot(overall_counts, col = rainbow(length(overall_counts)),
+        main = "Overall Distribution of Responses for All Questions",
+        xlab = "Survey ID",
+        ylab = "Count")
+
+# c. Table for survey response data for each survey
+cat("Survey Response Data for Each Survey\n")
+print(survey_data)
